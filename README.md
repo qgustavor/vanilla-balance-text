@@ -49,7 +49,7 @@ If you need to manually re-balance all triggered elements, use:
 
 ## Use from a CDN
 
-*This library don't is not hosted in any CDNs by now.*
+*This library isn't hosted in any CDNs by now.*
 
 ## Requirements
 BalanceText is designed to run in most common browsers and implemented as a vanilla JS plugin.
