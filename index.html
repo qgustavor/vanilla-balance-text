@@ -4,7 +4,7 @@
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Balance-text : A jQuery plugin for implementing balancing of wrapping text in a web page" />
+    <meta name="description" content="Vanilla Balance-text : A plugin for implementing balancing of wrapping text in a web page" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
@@ -16,14 +16,14 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
       <header class="inner">
-        <a id="forkme_banner" href="https://github.com/adobe-webplatform/balance-text">View on GitHub</a>
+        <a id="forkme_banner" href="https://github.com/qgustavor/balance-text">View on GitHub</a>
 
-        <h1 id="project_title">BalanceText</h1>
-        <h2 id="project_tagline">A jQuery plugin for balancing wrapping text in a web page</h2>
+        <h1 id="project_title">Vanilla BalanceText</h1>
+        <h2 id="project_tagline">A plugin for balancing wrapping text in a web page</h2>
 
         <section id="downloads">
-          <a class="zip_download_link" href="https://github.com/adobe-webplatform/balance-text/zipball/master">Download this project as a .zip file</a>
-          <a class="tar_download_link" href="https://github.com/adobe-webplatform/balance-text/tarball/master">Download this project as a tar.gz file</a>
+          <a class="zip_download_link" href="https://github.com/qgustavor/balance-text/zipball/master">Download this project as a .zip file</a>
+          <a class="tar_download_link" href="https://github.com/qgustavor/balance-text/tarball/master">Download this project as a tar.gz file</a>
         </section>
       </header>
     </div>
@@ -31,8 +31,9 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h1>BalanceText</h1>
-        <p>A jQuery plugin to provide an alternate text wrapping algorithm. I hope to get this into the CSS spec, so it's implemented as a polyfill.</p>
+        <h1>Vanilla BalanceText</h1>
+        <p>A plugin to provide an alternate text wrapping algorithm.</p>
+        <p><em>Converted to Vanilla based on <a href="https://github.com/adobe-webplatform/balance-text">adobe-webplatform/balance-text</a> (which requires jQuery).</em></p>
         <p>The default text rendering algorithm is:</p>
         <ol>
           <li>Add 1 word at a time to the current line until the next word won't fit.</li>
@@ -51,8 +52,7 @@
     }
     &lt;/style&gt;
 
-    &lt;script src="jquery-1.8.0.min.js"&gt;&lt;/script&gt;
-    &lt;script src="jquery.balancetext.min.js"&gt;&lt;/script&gt;</pre>
+    &lt;script src="balancetext.min.js"&gt;&lt;/script&gt;</pre>
         
         <p>See the <a href="demo/index.html">demo</a> provided for a working sample.</p>
         <p>Balance Text will automatically run on any elements with <code>.balance-text</code> class:</p>
@@ -62,23 +62,19 @@
         </ul>
         <p>You may also <em>manually</em> trigger it, e.g. if you're dynamically adding text to the DOM:</p>
 
-        <pre>    $('.my-class').balanceText();</pre>
+        <pre>balanceText(document.querySelector('.my-class'));</pre>
 
         <p>You can use any selector of your choice (you may wish to use an ID or restrict the scope for performance). These will re-balance on resize.</p>
         <p>If you need to manually re-balance all triggered elements, use:</p>
 
-        <pre>    $.balanceTextUpdate();</pre>
+        <pre>balanceText.update();</pre>
 
         <h2>Use from a CDN</h2>
-        <ul class="simple-list">
-          <li><a href="//cdnjs.cloudflare.com/ajax/libs/balance-text/1.6.0/jquery.balancetext.min.js">//cdnjs.cloudflare.com/ajax/libs/balance-text/1.6.0/jquery.balancetext.min.js</a></li>
-          <li><a href="//cdn.jsdelivr.net/jquery.balancetext/1.6.0/jquery.balancetext.min.js">//cdn.jsdelivr.net/jquery.balancetext/1.6.0/jquery.balancetext.min.js</a></li>
-        </ul>
+        <p><em>This library isn't hosted in any CDNs by now.</em></p>
 
         <h2>Requirements</h2>
-        <p>BalanceText is designed to run in most common browsers and implemented as a jQuery plugin. This means that the standard jQuery library is required for it to work. This plugin was last updated using jQuery 1.8, but it should work with all newer (and some older) versions of jQuery.</p>
-        <p>jQuery was used so that the code would be easier to write to work in most common browsers. None of the novel ideas introduced by this code require jQuery.</p>
-        <p>Code is minified using: <a href="http://marijnhaverbeke.nl/uglifyjs">UglifyJS</a></p>
+        <p>BalanceText is designed to run in most common browsers and implemented as a vanilla JavaScript plugin.</p>
+        <p>Code is minified using <a href="https://developers.google.com/closure/compiler/">Closure Compiler</a>.</p>
         
         <h2>Changelog</h2>
         <ul>
@@ -89,6 +85,7 @@
           <li>v 1.4.0 - Add support for nested tags (rileyjshaw)</li>
           <li>v 1.5.0 - Re-balance text on resize for manually triggered selectors (rileyjshaw)</li>
           <li>v 1.6.0 - Add balanceTextUpdate() method (rileyjshaw)</li>
+          <li>v 2.0.0 - Removed jQuery dependency</li>
         </ul>
       </section>
     </div>
