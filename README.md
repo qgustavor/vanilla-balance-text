@@ -1,6 +1,8 @@
-# BalanceText
+# Vanilla BalanceText
 
-A jQuery plugin to provide an alternate text wrapping algorithm. I hope to get this into the CSS spec, so it's implemented as a polyfill.
+A plugin to provide an alternate text wrapping algorithm.
+
+*Converted to Vanilla based on [adobe-webplatform/balance-text](https://github.com/adobe-webplatform/balance-text) (which requires jQuery).*
 
 The default text rendering algorithm is:
 
@@ -21,11 +23,10 @@ Here is a simple Balance Text setup:
   }
   </style>
 
-  <script src="jquery-1.8.0.min.js"></script>
-  <script src="jquery.balancetext.min.js"></script>
+  <script src="balancetext.min.js"></script>
 ```
 
-See the demo provided or [this online version for a working sample](http://adobe-webplatform.github.io/balance-text/demo/index.html).
+See the demo provided or [this online version for a working sample](https://qgustavor.github.io/vanilla-balance-text/demo/index.html).
 
 Balance Text will *automatically* run on any elements with <code>.balance-text</code> class:
 
@@ -35,7 +36,7 @@ Balance Text will *automatically* run on any elements with <code>.balance-text</
 You may also *manually* trigger it, e.g. if you're dynamically adding text to the DOM:
 
 ```
-    $('.my-class').balanceText();
+    balanceText(document.querySelector('.my-class'));
 ```
 
 You can use any selector of your choice (you may wish to use an ID or restrict the scope for performance). These will re-balance on resize.
@@ -43,21 +44,17 @@ You can use any selector of your choice (you may wish to use an ID or restrict t
 If you need to manually re-balance all triggered elements, use:
 
 ```
-    $.balanceTextUpdate();
+    balanceText.update();
 ```
 
 ## Use from a CDN
 
-[//cdnjs.cloudflare.com/ajax/libs/balance-text/1.6.0/jquery.balancetext.min.js](//cdnjs.cloudflare.com/ajax/libs/balance-text/1.6.0/jquery.balancetext.min.js)
-
-[//cdn.jsdelivr.net/jquery.balancetext/1.6.0/jquery.balancetext.min.js](//cdn.jsdelivr.net/jquery.balancetext/1.6.0/jquery.balancetext.min.js)
+*This library don't is not hosted in any CDNs by now.*
 
 ## Requirements
-BalanceText is designed to run in most common browsers and implemented as a jQuery plugin. This means that the standard jQuery library is required for it to work. This plugin was last updated using jQuery 1.8, but it should work with all newer (and some older) versions of jQuery.
+BalanceText is designed to run in most common browsers and implemented as a vanilla JS plugin.
 
-jQuery was used so that the code would be easier to write to work in most common browsers. None of the novel ideas introduced by this code require jQuery.
-
-Code is minified using: http://marijnhaverbeke.nl/uglifyjs
+Code is minified using [Closure Compiler](https://developers.google.com/closure/compiler/).
 
 ## Changelog
 * v 1.0.x - Initial Release, bug fix by chrisbank, better break point detection mmcgahan
@@ -67,3 +64,4 @@ Code is minified using: http://marijnhaverbeke.nl/uglifyjs
 * v 1.4.0 - Add support for nested tags (rileyjshaw)
 * v 1.5.0 - Re-balance text on resize for manually triggered selectors (rileyjshaw)
 * v 1.6.0 - Add balanceTextUpdate() method (rileyjshaw)
+* v 2.0.0 - Removed jQuery dependency
