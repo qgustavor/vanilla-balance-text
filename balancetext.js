@@ -311,7 +311,7 @@
         }
     };
 
-    global.balanceText = function (elements, skipResize) {
+    var balanceText = function (elements, skipResize) {
         if (!elements.length) {
           elements = [elements];
         }
@@ -451,6 +451,8 @@
         }
     };
 
+    // Export functions
+    global.balanceText = balanceText;
     global.balanceText.update = applyBalanceText;
     global.balanceText.removeTags = removeTags;
 
