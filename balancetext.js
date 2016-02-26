@@ -333,11 +333,11 @@
             return;
         }
         
-        if (!elements) {
+        if (elements === undefined) {
           return;
         }
         
-        if (!elements.length) {
+        if (elements.length === undefined) {
           elements = [elements];
         }
         
@@ -471,10 +471,10 @@
     };
     
     var disable = function (elements) {
-        if (!elements) {
+        if (elements === undefined) {
           return;
         }
-        if (!elements.length) {
+        if (elements.length === undefined) {
           elements = [elements];
         }
         
