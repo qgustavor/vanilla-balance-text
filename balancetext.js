@@ -464,5 +464,5 @@
     }
 
     // Reapply on resize
-    smartresize(document.documentElement, applyBalanceText);
+    smartresize(window, applyBalanceText);
 }(typeof module !== 'undefined' && module.exports ? module.exports : self || {}));
