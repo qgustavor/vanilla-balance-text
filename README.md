@@ -50,7 +50,7 @@ If you need to manually re-balance all triggered elements, use:
 If you need restore some element to the previous state you can use:
 
 ```javascript
-    balanceText.removeTags(element);
+    balanceText.disable(element);
 ```
 
 ## Use from a CDN

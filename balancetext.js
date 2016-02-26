@@ -130,6 +130,7 @@
     };
 
     var removeTags = function (el) {
+        if (!el) { return; }
         var breakElements = el.querySelectorAll('br[data-owner="balance-text"]');
         for (var i = 0; i < breakElements.length; i++) {
           breakElements[i].parentNode.removeChild(breakElements[i]);
@@ -312,6 +313,9 @@
     };
 
     var balanceText = function (elements, skipResize) {
+        if (!elements) {
+          return;
+        }
         if (!elements.length) {
           elements = [elements];
         }
@@ -425,7 +429,7 @@
                         newText += justify(element, lineText, containerWidth);
                     } else {
                         newText += lineText.replace(/\s$/, "");
-                        newText += '<br data-owner="balance-text" />';
+                        newText += '<br data-owner="balance-text">';
                     }
                     remainingText = remainingText.substr(splitIndex);
 
@@ -450,14 +454,31 @@
             element.style.lineHeight = oldLH;
         }
     };
+    
+    var disable = function (elements) {
+        if (!elements) {
+          return;
+        }
+        if (!elements.length) {
+          elements = [elements];
+        }
+        
+        for (var i = 0; i < elements.length; i++) {
+          removeTags(elements[i]);
+          var index = balancedElements.indexOf(elements[i]);
+          if (index !== -1) {
+            balancedElements.splice(index, 1);
+          }
+        }
+    }
 
     // Export functions
     global.balanceText = balanceText;
     global.balanceText.update = applyBalanceText;
-    global.balanceText.removeTags = removeTags;
+    global.balanceText.disable = disable;
 
     // Apply on DOM ready
-    if (document.readyState != 'loading'){
+    if (document.readyState !== 'loading'){
       applyBalanceText();
     } else {
       document.addEventListener('DOMContentLoaded', applyBalanceText);
