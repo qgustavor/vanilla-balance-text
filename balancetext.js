@@ -131,11 +131,21 @@
 
     var removeTags = function (el) {
         if (!el) { return; }
-        var breakElements = el.querySelectorAll('br[data-owner="balance-text"]');
+        
+        var id, temporaryId = false;
+        if (el.hasAttribute('id')) {
+          id = el.getAttribute('id');
+        } else {
+          id = 'balancetext_' + Date.now();
+          el.setAttribute('id', id);
+          temporaryId = true;
+        }
+        
+        var breakElements = document.querySelectorAll('#' + id + ' br[data-owner="balance-text"]');
         for (var i = 0; i < breakElements.length; i++) {
           breakElements[i].parentNode.removeChild(breakElements[i]);
         }
-        var span = el.querySelectorAll('span[data-owner="balance-text"]');
+        var span = document.querySelectorAll('#' + id + ' span[data-owner="balance-text"]');
         if (span.length > 0) {
             var txt = '';
             for (var i = 0 ; i < span.length; i++) {
@@ -143,6 +153,10 @@
                 span[i].parentNode.removeChild(span[i]);
             }
             el.innerHTML = txt;
+        }
+        
+        if (temporaryId) {
+          el.removeAttribute('id');
         }
     };
 
@@ -294,28 +308,30 @@
 
     // Selectors to watch; calling balanceText() on a new selector adds it to this list.
     var balancedElements = [];
-    var addedElementsByClassName = false;
 
     // Call the balanceText plugin on the elements with "balance-text" class. When a browser
     // has native support for the text-wrap property, the text balanceText plugin will let
     // the browser handle it natively, otherwise it will apply its own text balancing code.
     var applyBalanceText = function () {
-        if (!addedElementsByClassName) {
-          addedElementsByClassName = true;
-          var elements = document.querySelectorAll('.balance-text');
-          for (var i = 0; i < elements.length; i++) {
+        var elements = document.querySelectorAll('.balance-text');
+        for (var i = 0; i < elements.length; i++) {
+          if (balancedElements.indexOf(elements[i]) === -1) {
             balancedElements.push(elements[i]);
           }
         }
-        for (var i = 0; i < balancedElements.length; i++) {
-          balanceText(balancedElements[i], true);
-        }
+        balanceText(balancedElements, true);
     };
 
     var balanceText = function (elements, skipResize) {
+        if (hasTextWrap) {
+            // browser supports text-wrap, so do nothing
+            return;
+        }
+        
         if (!elements) {
           return;
         }
+        
         if (!elements.length) {
           elements = [elements];
         }
@@ -326,11 +342,6 @@
             if (!skipResize && balancedElements.indexOf(element) === -1) {
                 // record the selector so we can re-balance it on resize
                 balancedElements.push(element);
-            }
-
-            if (hasTextWrap) {
-                // browser supports text-wrap, so do nothing
-                return;
             }
 
             // In a lower level language, this algorithm takes time
