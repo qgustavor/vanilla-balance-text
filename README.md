@@ -47,6 +47,12 @@ If you need to manually re-balance all triggered elements, use:
     balanceText.update();
 ```
 
+If you need restore some element to the previous state you can use:
+
+```javascript
+    balanceText.removeTags(element);
+```
+
 ## Use from a CDN
 
 *This library isn't hosted in any CDNs by now.*
