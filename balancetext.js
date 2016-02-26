@@ -170,6 +170,11 @@
         style = el.currentStyle || window.getComputedStyle(el, null);
         return (style.textAlign === 'justify');
     };
+    
+    var getComputedProperty = function (el, property) {
+        style = el.currentStyle || window.getComputedStyle(el, null);
+        return parseInt(style[property]);
+    };
 
     /**
      * Add whitespace after words in text to justify the string to
@@ -192,7 +197,7 @@
         var tmp = document.createElement('span');
         tmp.innerHTML = txt;
         el.appendChild(tmp);
-        var size = tmp.getBoundingClientRect().width;
+        var size = getComputedProperty(tmp, 'width');
         el.removeChild(tmp);
 
         // Figure out our word spacing and return the element
@@ -253,7 +258,7 @@
                 }
 
                 el.innerHTML = txt.substr(0, c);
-                w = el.getBoundingClientRect().width;
+                w = getComputedProperty(el, 'width');
 
                 if ((dir < 0)
                         ? ((w <= desWidth) || (w <= 0) || (c === 0))
@@ -354,7 +359,7 @@
 
             // save settings
             var oldWS = element.style.whiteSpace;
-            var oldFloat = element.style.float;
+            var oldFloat = element.style.cssFloat;
             var oldDisplay = element.style.display;
             var oldPosition = element.style.position;
             var oldLH = element.style.lineHeight;
@@ -362,9 +367,8 @@
             // remove line height before measuring container size
             element.style.lineHeight = 'normal';
 
-            var containerBoundingRect = element.getBoundingClientRect();
-            var containerWidth = containerBoundingRect.width;
-            var containerHeight = containerBoundingRect.height;
+            var containerWidth = getComputedProperty(containerBoundingRect, 'width');
+            var containerHeight = getComputedProperty(containerBoundingRect, 'height');
 
             // temporary settings
             element.style.whiteSpace = 'nowrap';
@@ -447,7 +451,7 @@
                     // update counters
                     remLines--;
                     element.innerHTML = remainingText;
-                    nowrapWidth = element.getBoundingClientRect().width;
+                    nowrapWidth = getComputedProperty(element, 'width');
                 }
 
                 if (shouldJustify) {
