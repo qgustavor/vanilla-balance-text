@@ -54,7 +54,7 @@
  * http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
  *
  */
-(function (global, sr) {
+(function (global) {
     "use strict";
 
     var debounce = function (func, threshold, execAsap) {
