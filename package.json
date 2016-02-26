@@ -1,6 +1,6 @@
 {
     "name": "vanilla-balance-text",
-    "version": "2.1.2",
+    "version": "2.1.3",
     "main": "balancetext.js",
     "homepage": "https://github.com/qgustavor/vanilla-balance-text",
     "description": "A plugin for implementing balancing of text across lines in a web page",

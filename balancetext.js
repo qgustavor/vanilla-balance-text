@@ -367,8 +367,8 @@
             // remove line height before measuring container size
             element.style.lineHeight = 'normal';
 
-            var containerWidth = getComputedProperty(containerBoundingRect, 'width');
-            var containerHeight = getComputedProperty(containerBoundingRect, 'height');
+            var containerWidth = getComputedProperty(element, 'width');
+            var containerHeight = getComputedProperty(element, 'height');
 
             // temporary settings
             element.style.whiteSpace = 'nowrap';
