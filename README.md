@@ -15,7 +15,7 @@ That algorithm guarantees that the text is rendered using the least number of li
 ## How it works
 Here is a simple Balance Text setup:
 
-```
+```html
   <style type="text/css">
   /* Plugin looks for elements with class named "balance-text" */
   .balance-text {
@@ -35,7 +35,7 @@ Balance Text will *automatically* run on any elements with <code>.balance-text</
 
 You may also *manually* trigger it, e.g. if you're dynamically adding text to the DOM:
 
-```
+```javascript
     balanceText(document.querySelector('.my-class'));
 ```
 
@@ -43,13 +43,13 @@ You can use any selector of your choice (you may wish to use an ID or restrict t
 
 If you need to manually re-balance all triggered elements, use:
 
-```
+```javascript
     balanceText.update();
 ```
 
 ## Use from a CDN
 
-*This library don't is not hosted in any CDNs by now.*
+*This library isn't hosted in any CDNs by now.*
 
 ## Requirements
 BalanceText is designed to run in most common browsers and implemented as a vanilla JS plugin.
