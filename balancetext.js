@@ -376,8 +376,9 @@
             element.style.display = 'inline';
             element.style.position = 'static';
 
-            var nowrapWidth = getComputedProperty(element, 'width');
-            var nowrapHeight = getComputedProperty(element, 'height');
+            var nowrapBoundingRect = element.getBoundingClientRect();
+            var nowrapWidth = nowrapBoundingRect.width;
+            var nowrapHeight = nowrapBoundingRect.height;
 
             // An estimate of the average line width reduction due
             // to trimming trailing space that we expect over all
