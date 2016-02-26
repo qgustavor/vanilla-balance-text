@@ -452,6 +452,7 @@
     };
 
     global.balanceText.update = applyBalanceText;
+    global.balanceText.removeTags = removeTags;
 
     // Apply on DOM ready
     if (document.readyState != 'loading'){
