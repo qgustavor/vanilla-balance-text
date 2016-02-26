@@ -1,10 +1,11 @@
 {
   "name": "vanilla-balance-text",
-  "version": "1.0",
+  "version": "2.0.1",
   "authors": [
-    "Adobe Systems, Inc. <https://github.com/adobe-webplatform>"
+    "Adobe Systems, Inc. <https://github.com/adobe-webplatform>",
+    "Gustavo Rodrigues <https://github.com/qgustavor>",
   ],
-  "description": "A jQuery plugin for implementing balancing of text across lines in a web page",
+  "description": "A plugin for implementing balancing of text across lines in a web page",
   "main": "balancetext.min.js",
   "keywords": [
     "balance",

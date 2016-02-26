@@ -1,6 +1,6 @@
 {
     "name": "vanilla-balance-text",
-    "version": "1.0.0",
+    "version": "2.0.1",
     "filename": "balancetext.min.js",
     "homepage": "https://github.com/qgustavor/vanilla-balance-text",
     "description": "A plugin for implementing balancing of text across lines in a web page",
@@ -11,6 +11,10 @@
         }
     ],
     "maintainers": [
+        {
+            "name": "Adobe Systems, Inc.",
+            "web": "https://github.com/adobe-webplatform"
+        },
         {
             "name": "Gustavo Rodrigues",
             "web": "https://github.com/qgustavor"
