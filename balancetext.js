@@ -143,7 +143,7 @@
         
         var breakElements = document.querySelectorAll('#' + id + ' br[data-owner="balance-text"]');
         for (var i = 0; i < breakElements.length; i++) {
-          breakElements[i].parentNode.removeChild(breakElements[i]);
+          breakElements[i].parentNode.replaceChild(document.createTextNode(' '), breakElements[i]);
         }
         var span = document.querySelectorAll('#' + id + ' span[data-owner="balance-text"]');
         if (span.length > 0) {
