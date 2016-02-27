@@ -170,11 +170,6 @@
         style = el.currentStyle || window.getComputedStyle(el, null);
         return (style.textAlign === 'justify');
     };
-    
-    var getComputedProperty = function (el, property) {
-        style = el.currentStyle || window.getComputedStyle(el, null);
-        return parseInt(style[property]);
-    };
 
     /**
      * Add whitespace after words in text to justify the string to
@@ -197,7 +192,7 @@
         var tmp = document.createElement('span');
         tmp.innerHTML = txt;
         el.appendChild(tmp);
-        var size = getComputedProperty(tmp, 'width');
+        var size = tmp.offsetWidth;
         el.removeChild(tmp);
 
         // Figure out our word spacing and return the element
@@ -258,7 +253,7 @@
                 }
 
                 el.innerHTML = txt.substr(0, c);
-                w = getComputedProperty(el, 'width');
+                w = el.offsetWidth;
 
                 if ((dir < 0)
                         ? ((w <= desWidth) || (w <= 0) || (c === 0))
@@ -367,8 +362,8 @@
             // remove line height before measuring container size
             element.style.lineHeight = 'normal';
 
-            var containerWidth = getComputedProperty(element, 'width');
-            var containerHeight = getComputedProperty(element, 'height');
+            var containerWidth = element.offsetWidth;
+            var containerHeight = element.offsetHeight;
 
             // temporary settings
             element.style.whiteSpace = 'nowrap';
@@ -377,8 +372,8 @@
             element.style.position = 'static';
 
             var nowrapBoundingRect = element.getBoundingClientRect();
-            var nowrapWidth = nowrapBoundingRect.width;
-            var nowrapHeight = nowrapBoundingRect.height;
+            var nowrapWidth = element.offsetWidth;
+            var nowrapHeight = element.offsetHeight;
 
             // An estimate of the average line width reduction due
             // to trimming trailing space that we expect over all
@@ -451,7 +446,7 @@
                     // update counters
                     remLines--;
                     element.innerHTML = remainingText;
-                    nowrapWidth = getComputedProperty(element, 'width');
+                    nowrapWidth = element.offsetWidth;
                 }
 
                 if (shouldJustify) {
