@@ -16,31 +16,26 @@ That algorithm guarantees that the text is rendered using the least number of li
 Here is a simple Balance Text setup:
 
 ```html
-  <style type="text/css">
-  /* Plugin looks for elements with class named "balance-text" */
-  .balance-text {
-      text-wrap: balanced;  /* Apply (proposed) CSS style */
-  }
-  </style>
+<style>
+/* Plugin looks for elements with class named "balance-text" */
+.balance-text {
+  text-wrap: balanced;  /* Apply (proposed) CSS style */
+}
+</style>
 
-  <script src="balancetext.min.js"></script>
-  <script>balanceText(document.querySelectorAll('.balance-text'));</script>
+<script src="balancetext.min.js"></script>
+<script>balanceText(document.querySelectorAll('.balance-text'));</script>
 ```
 
 See the demo provided or [this online version for a working sample](https://qgustavor.github.io/vanilla-balance-text/demo/index.html).
 
-You can use any selector of your choice (you may wish to use an ID or restrict the scope for performance).
-
-If you need to manually re-balance elements you can simply call `balanceText()` again.
-
-```javascript
-    balanceText(elements);
-```
+You can use a DOM element or a array-like object (like `document.querySelectorAll`
+or a jQuery object). If you need tore-balance elements you can simply call it again.
 
 If you need restore some element to the previous state you can use:
 
 ```javascript
-    balanceText.disable(element);
+balanceText.disable(element);
 ```
 
 ## Use from a CDN
@@ -48,7 +43,9 @@ If you need restore some element to the previous state you can use:
 *This library isn't hosted in any CDNs by now.*
 
 ## Requirements
-BalanceText is designed to run in most common browsers and implemented as a vanilla JS script (no dependencies).
+BalanceText is designed to run in most common browsers and implemented as a
+vanilla JavaScript script (no dependencies). It can run alone (like in demo) or
+along with frameworks and libraries (tested with React and React-lite).
 
 Code is minified using [Closure Compiler](https://developers.google.com/closure/compiler/).
 
