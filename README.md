@@ -38,6 +38,9 @@ If you need restore some element to the previous state you can use:
 balanceText.disable(element);
 ```
 
+Please note that as 3.0 this plugin handle **only** text-balancing. If you want
+rebalancing on window resize it's up to you do that.
+
 ## Use from a CDN
 
 This library isn't hosted in any JavaScript CDNs by now, only [RawGit](https://rawgit.com):
@@ -63,3 +66,4 @@ Code is minified using [Closure Compiler](https://developers.google.com/closure/
 * v 3.0.0 - Simplified code:
     * Not balancing elements based on '.balance-text' class
     * Not re-balancing elements on resize
+    * Improved performance (plugin don't need to cache anything, like balanced elements, anymore)
