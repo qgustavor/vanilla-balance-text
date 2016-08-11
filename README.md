@@ -4,6 +4,8 @@ A plugin to provide an alternate text wrapping algorithm.
 
 *Converted to Vanilla based on [adobe-webplatform/balance-text](https://github.com/adobe-webplatform/balance-text) (which requires jQuery).*
 
+*This is the readme for the 2.0 version, which isn't supported anymore.*
+
 The default text rendering algorithm is:
 
 1. Add 1 word at a time to the current line until the next word won't fit.
