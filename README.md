@@ -40,7 +40,7 @@ balanceText.disable(element);
 
 ## Use from a CDN
 
-This library isn't hosted in any JavaScript CDNs by now, only <https://cdn.rawgit.com>:
+This library isn't hosted in any JavaScript CDNs by now, only (RawGit)[https://rawgit.com]:
 
 https://cdn.rawgit.com/qgustavor/vanilla-balance-text/7abd0ec1753bf0f829e0be2748cb6bd04c683066/balancetext.min.js
 
