@@ -29,7 +29,7 @@
       <li>Change the width of the browser window.</li>
       <li>Change the font size using Ctrl &quot;+&quot; and Ctrl &quot;-&quot;.</li>
     </ul>
-    <p>Note that due to how different browsers send out resize events, you may need to refresh the browser to see the balanced text  solution on the right.</p>
+    <p>Note that rebalancing on resize is disabled, so, you may need to refresh the browser to see the balanced text solution on the right.</p>
   </header>
 
 <div id="content">
@@ -76,6 +76,10 @@
     </div>
   </section>
 </div>
+
+<script>
+  balanceText(document.querySelectorAll('.balance-text'));
+</script>
 
 </body>
 </html>

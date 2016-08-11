@@ -16,49 +16,41 @@ That algorithm guarantees that the text is rendered using the least number of li
 Here is a simple Balance Text setup:
 
 ```html
-  <style type="text/css">
-  /* Plugin looks for elements with class named "balance-text" */
-  .balance-text {
-      text-wrap: balanced;  /* Apply (proposed) CSS style */
-  }
-  </style>
+<style>
+/* Plugin looks for elements with class named "balance-text" */
+.balance-text {
+  text-wrap: balanced;  /* Apply (proposed) CSS style */
+}
+</style>
 
-  <script src="balancetext.min.js"></script>
+<script src="balancetext.min.js"></script>
+<script>balanceText(document.querySelectorAll('.balance-text'));</script>
 ```
 
 See the demo provided or [this online version for a working sample](https://qgustavor.github.io/vanilla-balance-text/demo/index.html).
 
-Balance Text will *automatically* run on any elements with <code>.balance-text</code> class:
-
-- when the page loads (DOM Ready event)
-- when it is resized
-
-You may also *manually* trigger it, e.g. if you're dynamically adding text to the DOM:
-
-```javascript
-    balanceText(document.querySelector('.my-class'));
-```
-
-You can use any selector of your choice (you may wish to use an ID or restrict the scope for performance). These will re-balance on resize.
-
-If you need to manually re-balance all triggered elements, use:
-
-```javascript
-    balanceText.update();
-```
+You can use a DOM element or a array-like object (like `document.querySelectorAll`
+or a jQuery object). If you need tore-balance elements you can simply call it again.
 
 If you need restore some element to the previous state you can use:
 
 ```javascript
-    balanceText.disable(element);
+balanceText.disable(element);
 ```
+
+Please note that as 3.0 this plugin handle **only** text-balancing. If you want
+rebalancing on window resize it's up to you do that.
 
 ## Use from a CDN
 
-*This library isn't hosted in any CDNs by now.*
+This library isn't hosted in any JavaScript CDNs by now, only [RawGit](https://rawgit.com):
+
+https://cdn.rawgit.com/qgustavor/vanilla-balance-text/7abd0ec1753bf0f829e0be2748cb6bd04c683066/balancetext.min.js
 
 ## Requirements
-BalanceText is designed to run in most common browsers and implemented as a vanilla JS plugin.
+BalanceText is designed to run in most common browsers and implemented as a
+vanilla JavaScript script (no dependencies). It can run alone (like in demo) or
+along with frameworks and libraries (tested with React and React-lite).
 
 Code is minified using [Closure Compiler](https://developers.google.com/closure/compiler/).
 
@@ -71,3 +63,7 @@ Code is minified using [Closure Compiler](https://developers.google.com/closure/
 * v 1.5.0 - Re-balance text on resize for manually triggered selectors (rileyjshaw)
 * v 1.6.0 - Add balanceTextUpdate() method (rileyjshaw)
 * v 2.0.0 - Removed jQuery dependency
+* v 3.0.0 - Simplified code:
+    * Not balancing elements based on '.balance-text' class
+    * Not re-balancing elements on resize
+    * Improved performance (plugin don't need to cache anything, like balanced elements, anymore)
