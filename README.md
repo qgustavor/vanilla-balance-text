@@ -24,27 +24,17 @@ Here is a simple Balance Text setup:
   </style>
 
   <script src="balancetext.min.js"></script>
+  <script>balanceText(document.querySelectorAll('.balance-text'));</script>
 ```
 
 See the demo provided or [this online version for a working sample](https://qgustavor.github.io/vanilla-balance-text/demo/index.html).
 
-Balance Text will *automatically* run on any elements with <code>.balance-text</code> class:
+You can use any selector of your choice (you may wish to use an ID or restrict the scope for performance).
 
-- when the page loads (DOM Ready event)
-- when it is resized
-
-You may also *manually* trigger it, e.g. if you're dynamically adding text to the DOM:
+If you need to manually re-balance elements you can simply call `balanceText()` again.
 
 ```javascript
-    balanceText(document.querySelector('.my-class'));
-```
-
-You can use any selector of your choice (you may wish to use an ID or restrict the scope for performance). These will re-balance on resize.
-
-If you need to manually re-balance all triggered elements, use:
-
-```javascript
-    balanceText.update();
+    balanceText(elements);
 ```
 
 If you need restore some element to the previous state you can use:
@@ -58,7 +48,7 @@ If you need restore some element to the previous state you can use:
 *This library isn't hosted in any CDNs by now.*
 
 ## Requirements
-BalanceText is designed to run in most common browsers and implemented as a vanilla JS plugin.
+BalanceText is designed to run in most common browsers and implemented as a vanilla JS script (no dependencies).
 
 Code is minified using [Closure Compiler](https://developers.google.com/closure/compiler/).
 
@@ -71,3 +61,6 @@ Code is minified using [Closure Compiler](https://developers.google.com/closure/
 * v 1.5.0 - Re-balance text on resize for manually triggered selectors (rileyjshaw)
 * v 1.6.0 - Add balanceTextUpdate() method (rileyjshaw)
 * v 2.0.0 - Removed jQuery dependency
+* v 3.0.0 - Simplified code:
+    * Not balancing elements based on '.balance-text' class
+    * Not re-balancing elements on resize
