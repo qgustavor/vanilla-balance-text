@@ -192,7 +192,7 @@
         var tmp = document.createElement('span');
         tmp.innerHTML = txt;
         el.appendChild(tmp);
-        var size = tmp.offsetWidth;
+        var size = parseInt(window.getComputedStyle(tmp).width);
         el.removeChild(tmp);
 
         // Figure out our word spacing and return the element
