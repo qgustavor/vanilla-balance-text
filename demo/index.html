@@ -80,7 +80,12 @@
 </footer>
 
 <script src="balancetext-3.1.0.min.js"></script>
-<script>balanceText(document.querySelectorAll('.balance-text'));</script>
+<script>
+	balanceText(document.querySelectorAll('.balance-text'));
+	window.addEventListener('resize', function () {
+	  balanceText(document.querySelectorAll('.balance-text'));	
+	})
+</script>
 
 </body>
 </html>
