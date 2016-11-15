@@ -16,13 +16,6 @@ That algorithm guarantees that the text is rendered using the least number of li
 Here is a simple Balance Text setup:
 
 ```html
-<style>
-/* Plugin looks for elements with class named "balance-text" */
-.balance-text {
-  text-wrap: balanced;  /* Apply (proposed) CSS style */
-}
-</style>
-
 <script src="balancetext.min.js"></script>
 <script>balanceText(document.querySelectorAll('.balance-text'));</script>
 ```
@@ -30,7 +23,7 @@ Here is a simple Balance Text setup:
 See the demo provided or [this online version for a working sample](https://qgustavor.github.io/vanilla-balance-text/demo/index.html).
 
 You can use a DOM element or a array-like object (like `document.querySelectorAll`
-or a jQuery object). If you need tore-balance elements you can simply call it again.
+or a jQuery object). If you need to re-balance elements you can simply call `balanceText` again.
 
 If you need restore some element to the previous state you can use:
 
@@ -63,7 +56,9 @@ Code is minified using [Closure Compiler](https://developers.google.com/closure/
 * v 1.5.0 - Re-balance text on resize for manually triggered selectors (rileyjshaw)
 * v 1.6.0 - Add balanceTextUpdate() method (rileyjshaw)
 * v 2.0.0 - Removed jQuery dependency
+* v 2.1.0 - Backported fix from 3.1.0
 * v 3.0.0 - Simplified code:
     * Not balancing elements based on '.balance-text' class
     * Not re-balancing elements on resize
     * Improved performance (plugin don't need to cache anything, like balanced elements, anymore)
+* v 3.1.0 - Fix problem with justification
