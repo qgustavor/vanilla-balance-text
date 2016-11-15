@@ -56,7 +56,9 @@ Code is minified using [Closure Compiler](https://developers.google.com/closure/
 * v 1.5.0 - Re-balance text on resize for manually triggered selectors (rileyjshaw)
 * v 1.6.0 - Add balanceTextUpdate() method (rileyjshaw)
 * v 2.0.0 - Removed jQuery dependency
+* v 2.1.0 - Backported fix from 3.1.0
 * v 3.0.0 - Simplified code:
     * Not balancing elements based on '.balance-text' class
     * Not re-balancing elements on resize
     * Improved performance (plugin don't need to cache anything, like balanced elements, anymore)
+* v 3.1.0 - Fix problem with justification
