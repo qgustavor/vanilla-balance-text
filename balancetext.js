@@ -98,6 +98,32 @@
   };
 
   /**
+    * A jQuery.fn.width almost equivalent function
+    */
+  var getElementWidth = function (element) {
+    var style = getComputedStyle(element);
+    
+    return element.offsetWidth -
+      (parseInt(style.borderLeftWidth) || 0) -
+      (parseInt(style.borderRightWidth) || 0) -
+      (parseInt(style.paddingLeft) || 0) -
+      (parseInt(style.paddingRight) || 0);
+  };
+
+  /**
+    * A jQuery.fn.width almost equivalent function
+    */
+  var getElementHeight = function (element) {
+    var style = getComputedStyle(element);
+    
+    return element.offsetHeight -
+      (parseInt(style.borderTopWidth) || 0) -
+      (parseInt(style.borderBottomWidth) || 0) -
+      (parseInt(style.paddingTop) || 0) -
+      (parseInt(style.paddingBottom) || 0);
+  };
+
+  /**
      * Add whitespace after words in text to justify the string to
      * the specified size.
      *
@@ -118,7 +144,7 @@
     var tmp = document.createElement('span');
     tmp.innerHTML = txt;
     el.appendChild(tmp);
-    var size = parseInt(window.getComputedStyle(tmp).width) || tmp.offsetWidth;
+    var size = getElementWidth(tmp);
     el.removeChild(tmp);
     // Figure out our word spacing and return the element
     var wordSpacing = Math.floor((conWidth - size) / (words - 1));
@@ -178,7 +204,7 @@
           c += dir;
         }
         el.innerHTML = txt.substr(0, c);
-        w = el.offsetWidth;
+        w = getElementWidth(el);
         if (dir < 0 ? w <= desWidth || w <= 0 || c === 0 : desWidth <= w || conWidth <= w || c === txt.length) {
           break;
         }
@@ -256,8 +282,8 @@
       // remove line height before measuring container size
       element.style.lineHeight = 'normal';
 
-      var containerWidth = element.offsetWidth;
-      var containerHeight = element.offsetHeight;
+      var containerWidth = getElementWidth(element);
+      var containerHeight = getElementHeight(element);
 
       // temporary settings
       element.style.whiteSpace = 'nowrap';
@@ -265,9 +291,8 @@
       element.style.display = 'inline';
       element.style.position = 'static';
 
-      var nowrapBoundingRect = element.getBoundingClientRect();
-      var nowrapWidth = element.offsetWidth;
-      var nowrapHeight = element.offsetHeight;
+      var nowrapWidth = getElementWidth(element);
+      var nowrapHeight = getElementHeight(element);
 
       // An estimate of the average line width reduction due
       // to trimming trailing space that we expect over all
@@ -333,7 +358,7 @@
           // update counters
           remLines--;
           element.innerHTML = remainingText;
-          nowrapWidth = element.offsetWidth;
+          nowrapWidth = getElementWidth(element);
         }
 
         if (shouldJustify) {
